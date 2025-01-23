@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: gastpro-api
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gastpro
+    username: jasmynejean-remy
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mail:
+    host: localhost
+    port: 1025
+
+
+

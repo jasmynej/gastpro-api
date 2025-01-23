@@ -7,6 +7,8 @@ import org.gastpro.api.accounts.domain.Account;
 import org.gastpro.api.common.enums.EmployeeStatus;
 import org.gastpro.api.common.enums.EmploymentType;
 import org.gastpro.api.restaurants.domain.Restaurant;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -42,7 +44,7 @@ public class Employee {
     private EmployeeStatus status;
 
     @Column(name = "hourly_rate", length = Integer.MAX_VALUE)
-    private String hourlyRate;
+    private Double hourlyRate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "employment_type", length = Integer.MAX_VALUE)
@@ -54,9 +56,11 @@ public class Employee {
 
 
     @Column(name = "created_at")
+    @CreationTimestamp
     private Instant createdAt;
 
     @Column(name = "updated_at")
+    @UpdateTimestamp
     private Instant updatedAt;
 
 

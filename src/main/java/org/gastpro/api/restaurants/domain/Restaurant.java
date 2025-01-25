@@ -1,13 +1,18 @@
 package org.gastpro.api.restaurants.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.gastpro.api.employees.domain.Employee;
+import org.gastpro.api.menu.domain.Menu;
 import org.gastpro.api.owners.domain.Owner;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -36,5 +41,13 @@ public class Restaurant {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Instant updatedAt;
+
+    @OneToMany(mappedBy = "restaurant", orphanRemoval = true)
+    @JsonManagedReference
+    private List<Menu> menus = new ArrayList<>();
+
+    @OneToMany(mappedBy = "restaurant", orphanRemoval = true)
+    @JsonManagedReference
+    private List<Employee> employees = new ArrayList<>();
 
 }

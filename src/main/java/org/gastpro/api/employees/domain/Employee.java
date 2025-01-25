@@ -1,5 +1,6 @@
 package org.gastpro.api.employees.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -52,6 +53,7 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
+    @JsonBackReference
     private Restaurant restaurant;
 
 
